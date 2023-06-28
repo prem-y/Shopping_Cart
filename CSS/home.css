@@ -1,0 +1,17 @@
+#cart{
+    float:right;
+    height: 2em;
+    width: auto;
+    margin:1%;
+}
+
+a{
+    font-size: 2em;
+    color: black;
+    text-decoration: none;
+}
+
+nav{
+    padding: 1.5em;
+    background-color: #0097B2;
+}
