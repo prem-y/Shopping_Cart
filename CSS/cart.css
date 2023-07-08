@@ -6,14 +6,10 @@
 }
 
 .brand{
-    font-size: 2em;
-    color: black;
-    text-decoration: none;
     font-weight: bolder;
 }
 
 nav{
-    padding: 1.2em;
     background-color: #0097B2;
 }
 .c{
