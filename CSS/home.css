@@ -17,3 +17,13 @@ nav{
     color: black;
     text-decoration: none;
 }
+
+.box1{
+    background-color: red;
+    height: 20px;
+    width: 15px;
+    position: relative;  
+    left: 2em;
+    opacity: 0.7;
+    border-radius: 0.2em;
+}
