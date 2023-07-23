@@ -12,7 +12,7 @@ const shirts =[
         id: 2,
         name: "HIGHLANDER",
         price: 410,
-        discription: "Men White Slim Fit Printed Casual Shirt",
+        discription: "Men White Slim Fit Printed Casual",
         image :"../images/img2.jpg",
         quantinty: 0
     },
@@ -20,7 +20,7 @@ const shirts =[
         id: 3,
         name: "LOCOMOTIVE",
         price: 419,
-        discription: "Men Navy Blue & White Slim Fit Printed Casual Shirt",
+        discription: "Men Navy Blue & White Slim Fit",
         image :"../images/img3.jpg",
         quantinty: 0
     },
@@ -28,7 +28,7 @@ const shirts =[
         id: 4,
         name: "KETCH",
         price: 399,
-        discription: "Men Pink and Navy Blue Slim Fit Striped Casual Shirt",
+        discription: "Men Pink and Navy Blue Slim Fit",
         image: "../images/img4.jpg",
         quantinty: 0
     },
@@ -40,7 +40,7 @@ const trousers =[
         id: 5,
         name: "COMBRAIDED",
         price: 492,
-        discription: "Men Relaxed Mid Rise Plain Knitted Slim Fit Chinos Trousers",
+        discription: "Men Relaxed Mid Rise Plain Knitted",
         image: "../images/img5.jpg",
         quantinty: 0
     },
@@ -64,41 +64,55 @@ const trousers =[
         id: 8,
         name: "LEVIS",
         price: 1619,
-        discription: "Men Mid-Rise Tapered Fit Chinos Trousers",
+        discription: "Men Mid-Rise Tapered Fit Chinos",
         image: "../images/img8.jpg",
         quantinty: 0
     }
     //add more products here
 ]
 
-function renderProductCards(){
-    const productlist = documnet.getElementById("Shirts-list");
-    const allProducts = [...shirts,...trousers];
 
-    allProducts.forEach(product =>{
-        const card = document.createElement("div");
-        card.innerHTML = `
-        <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-header">
-                                <img src="${product.image}" alt="" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <span style="font-size: 2em;">₹</span>
-                                <span style="font-size: 2em;" value="cost">${product.price}</span>
-                                <button onclick="changeNumSub()" class="btn btn-outline-success" style="float: right; margin: 5px;">-</button>
-                                <button onclick="changeNumAdd()" class="btn btn-outline-success" style="float: right; margin: 5px;">+</button> <br>
-                                <span style="font-size: 1em; font-weight: bolder;">${product.name}</span> <br>
-                                <span>${product.discription}</span>
-                                <br><br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        `
-    })
-}
+function renderProductCards() {
+    const productList = document.getElementById("Shirts-list");
+    if (!productList) return;
+  
+    productList.innerHTML = "";
+  
+    const allProducts = [...shirts, ...trousers]; 
+  
+    allProducts.forEach(product => {
+      const card = document.createElement("div");
+      card.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
+      card.innerHTML = `
+        <div class="card">
+          <img src="${product.image}" class="card-img-top" alt="${product.name}">
+          <div class="card-body">
+            <span class="card-title h4">${product.name}</span>
+            <div class="card-text">${product.discription}</div> 
+            <span class="card-text h5">Rs. ${product.price}</span>
+            <div class="d-grid gap-2">
+              <button class="btn btn-outline-primary add-to-cart-btn" data-product-id="${product.id}">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      `;
+  
+      if (product instanceof Object && product.id >= 5 && product.id <= 8) {
+        const smartwatchList = document.getElementById("Trousers-list");
+        if (smartwatchList) {
+          smartwatchList.appendChild(card);
+        }
+      } else {
+        productList.appendChild(card);
+      }
+    });
+  
+    // Add event listeners to the "Add to cart" buttons
+    const addToCartButtons = document.getElementsByClassName("add-to-cart-btn");
+    for (let i = 0; i < addToCartButtons.length; i++) {
+      addToCartButtons[i].addEventListener("click", addToCart);
+    }
+  }
 
 document.addEventListener("DOMContentLoaded",function(){
     renderProductCards();
