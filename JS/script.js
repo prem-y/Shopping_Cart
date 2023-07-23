@@ -101,5 +101,5 @@ function renderProductCards(){
 }
 
 document.addEventListener("DOMContentLoaded",function(){
-    // renderProductCards();
+    renderProductCards();
 })
