@@ -9,17 +9,13 @@
     font-weight: bolder;
 }
 
-nav{
-    /* padding: 1.2em; */
-    background-color: #0097B2;
-}
 .c{
     color: black;
     text-decoration: none;
 }
 
 .box1{
-    background-color: red;
+    background-color: rgb(0, 0, 0);
     height: 20px;
     width: 15px;
     position: relative;  
